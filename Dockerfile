@@ -12,11 +12,11 @@ RUN chmod +x /root/update-plugins.sh /root/update-themes.sh
 
 FROM svn-update-pre AS svn-update-plugins
 
-CMD bash /root/update-plugins.sh
+ENTRYPOINT [ "bash", "/root/update-plugins.sh" ]
 
 FROM svn-update-pre AS svn-update-themes
 
-CMD bash /root/update-themes.sh
+ENTRYPOINT [ "bash", "/root/update-themes.sh" ]
 
 FROM svn-base AS svn-apache
 
@@ -44,4 +44,4 @@ RUN chown -R www-data:www-data /home/svn
 EXPOSE 80
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+ENTRYPOINT [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
