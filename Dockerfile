@@ -12,11 +12,14 @@ RUN chmod +x /root/update-plugins.sh /root/update-themes.sh
 
 FROM svn-update-pre AS svn-update-plugins
 
-ENTRYPOINT [ "bash", "/root/update-plugins.sh" ]
+STOPSIGNAL SIGINT
+
+#ENTRYPOINT ["svnsync", "--non-interactive", "--steal-lock", "sync", "file:///home/svn/themes"]
+#ENTRYPOINT [ "exec", "/root/update-plugins.sh" ]
 
 FROM svn-update-pre AS svn-update-themes
 
-ENTRYPOINT [ "bash", "/root/update-themes.sh" ]
+ENTRYPOINT [ "/root/update-themes.sh" ]
 
 FROM svn-base AS svn-apache
 

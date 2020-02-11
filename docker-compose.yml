@@ -1,28 +1,28 @@
 version: '3.7'
 
 services:
-  svn:
-    build:
-      context: .
-      target: svn-apache
-    volumes:
-    - ./svn-root:/home/svn:ro
-    ports:
-      - "8080:80"
-    restart: "no"
-    env_file:
-      - .env
-  update-plugins:
-    build:
-      context: .
-      target: svn-update-plugins
-    volumes:
-      - ./svn-root:/home/svn
-    restart: "no"
-    stdin_open: true
-    tty: true
-    env_file:
-      - .env
+  #svn:
+  #  build:
+  #    context: .
+  #    target: svn-apache
+  #  volumes:
+  #  - ./svn-root:/home/svn:ro
+  #  ports:
+  #    - "8080:80"
+  #  restart: "no"
+  #  env_file:
+  #    - .env
+  #update-plugins:
+  #  build:
+  #    context: .
+  #    target: svn-update-plugins
+  #  volumes:
+  #    - ./svn-root:/home/svn
+  #  restart: "no"
+  #  stdin_open: true
+  #  tty: true
+  #  env_file:
+  #    - .env
   update-themes:
     build:
       context: .
