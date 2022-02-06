@@ -10,4 +10,5 @@ services:
       - "8080:80"
     restart: "no"
     env_file:
-      - .env
+      - .env # Doesn't seem to actually override the default config in Dockerfile
+    container_name: wp-metrics-svn-svn

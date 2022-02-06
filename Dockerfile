@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM ubuntu:21.10
 
 ENV WEBDAV_USERNAME admin
 ENV WEBDAV_PASSWORD password
