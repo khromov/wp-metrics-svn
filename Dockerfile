@@ -3,7 +3,7 @@ FROM ubuntu:21.10
 ENV WEBDAV_USERNAME admin
 ENV WEBDAV_PASSWORD password
 
-RUN apt-get update && apt-get install -y apache2 apache2-utils subversion libapache2-mod-svn
+RUN apt-get update && apt-get install -y apache2 apache2-utils subversion libapache2-mod-svn openssh-client
 
 #RUN a2enmod dav
 RUN a2enmod dav_fs
