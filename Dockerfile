@@ -1,7 +1,7 @@
 FROM ubuntu:21.10
 
-ENV WEBDAV_USERNAME admin
-ENV WEBDAV_PASSWORD password
+#ENV WEBDAV_USERNAME admin
+#ENV WEBDAV_PASSWORD password
 
 RUN apt-get update && apt-get install -y apache2 apache2-utils subversion libapache2-mod-svn openssh-client
 
@@ -13,12 +13,13 @@ RUN mkdir /home/svn/ &&\
 
 # Add WebDav configuration
 ADD apache/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+ADD apache/dav_svn.authz /etc/apache2/dav_svn.authz
 
 # Set HOME in non /root folder
 ENV HOME /home
 
 # Setup auth
-RUN htpasswd -b /etc/subversion/passwd $WEBDAV_USERNAME $WEBDAV_PASSWORD
+# RUN htpasswd -b /etc/subversion/passwd $WEBDAV_USERNAME $WEBDAV_PASSWORD
 
 # chown
 RUN chown -R www-data:www-data /home/svn
