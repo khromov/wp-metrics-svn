@@ -14,7 +14,11 @@ docker-compose up
 ./scripts/initialize-repos.sh # Initializes mirror repos. They will be in ./svn-root
 ```
 
-### Sync
+The cron job will update your plugins and themes according to the rules in `cron/sync`.
+
+### Sync manually
+
+Useful for initial sync. Don't worry about the cron jobs, they will time out after a while because the repo is locked by another process.
 
 ```
 ./scripts/sync-plugins.sh # Syncs plugins
@@ -22,11 +26,6 @@ docker-compose up
 ```
 
 ### Use your local mirror
-
-The login is: 
-
-* Username: `admin`
-* Password: `password`
 
 ###### Plugins
 
