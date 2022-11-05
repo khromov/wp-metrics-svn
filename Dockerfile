@@ -38,7 +38,7 @@ RUN crontab /etc/cron.d/sync
 RUN touch /var/log/plugins.log
 RUN touch /var/log/themes.log
 
-EXPOSE 80
+EXPOSE 8080
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

@@ -7,7 +7,7 @@ services:
     volumes:
     - ./svn-root:/home/svn
     ports:
-      - "8080:80"
+      - "8080:8080"
     restart: "no"
     env_file:
       - .env
