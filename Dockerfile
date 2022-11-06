@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 #ENV WEBDAV_USERNAME admin
 #ENV WEBDAV_PASSWORD password
 
-RUN apt-get update && apt-get install -y apache2 apache2-utils subversion libapache2-mod-svn openssh-client cron supervisor
+RUN apt-get update && apt-get install -y apache2 apache2-utils subversion libapache2-mod-svn openssh-client cron supervisor curl
 
 #RUN a2enmod dav
 RUN a2enmod dav_fs
@@ -13,6 +13,7 @@ RUN mkdir /home/svn/ &&\
 
 # Add WebDav configuration
 ADD apache/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+ADD apache/ports.conf /etc/apache2/ports.conf
 ADD apache/dav_svn.authz /etc/apache2/dav_svn.authz
 ADD scripts/ /home/scripts/
 
